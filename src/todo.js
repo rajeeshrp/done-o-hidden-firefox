@@ -47,10 +47,14 @@ async function renderTasks() {
 
 function updateUI(percent) {
   progressBar.style.width = percent + "%";
-  statusText.textContent = `${percent}% Completed`;
+  statusText.textContent = '';
   
   if (percent === 100) {
-    statusText.innerHTML = `🎉 <strong>100% Done! You can now access ${domain}.</strong>`;
+    const strongElem = document.createElement('strong');
+    strongElem.textContent = `100% Done! You can now access ${domain}.`;
+    statusText.append("🎉 ", strongElem);
+  } else {
+    statusText.textContent = `${percent}% Completed`;
   }
 }
 

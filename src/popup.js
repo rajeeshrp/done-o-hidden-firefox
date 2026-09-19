@@ -62,7 +62,7 @@ async function loadDomains() {
     li.textContent = domain;
 
     const deleteBtn = document.createElement("button");
-    deleteBtn.textContent = "✕";
+    deleteBtn.textContent = "X";
     deleteBtn.className = "delete-btn";
     deleteBtn.addEventListener("click", async () => {
       domains.splice(index, 1);
