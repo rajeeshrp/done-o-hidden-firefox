@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Finish Your Tasks First!</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; padding: 50px; background: #f4f4f9; }
+    .card { background: white; padding: 30px; border-radius: 8px; display: inline-block; box-shadow: 0 4px 6px rgba(0,0,0,0.1); min-width: 300px; }
+    h2 { color: #333; }
+    .progress-bar { background: #eee; border-radius: 10px; height: 20px; width: 100%; margin: 20px 0; overflow: hidden; }
+    .progress { background: #4CAF50; height: 100%; width: 0%; transition: width 0.3s; }
+    ul { list-style: none; padding: 0; text-align: left; }
+    li { margin: 10px 0; font-size: 18px; }
+    input { margin-right: 10px; transform: scale(1.2); }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>🔒 <span id="domain-name">DOMAIN</span> is Locked</h2>
+    <p>Complete your daily goals to unlock it.</p>
+    <div class="progress-bar"><div id="progress" class="progress"></div></div>
+    <div id="status">0% Completed</div>
+    <ul id="task-list"></ul>
+  </div>
+  <script src="todo.js"></script>
+</body>
+</html>
+

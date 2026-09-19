@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { width: 280px; font-family: Arial, sans-serif; padding: 12px; margin: 0;}
+    h3 { margin-top: 15px; margin-bottom: 8px; border-bottom: 1px solid #ccc; padding-bottom: 3px; }
+    .row { display: flex; gap: 5px; margin-bottom: 8px; }
+    input[type="text"] { flex-grow: 1; padding: 5px; }
+    button { padding: 5px 10px; cursor: pointer; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    li { display: flex; justify-content: space-between; align-items: center; padding: 4px 0; font-size: 14px; }
+    .delete-btn { color: red; background: none; border: none; font-weight: bold; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h3>📝 Daily Tasks</h3>
+  <div class="row">
+    <input type="text" id="new-task" placeholder="Add a task...">
+    <button id="add-btn">Add</button>
+  </div>
+  
+  <ul id="popup-tasks"></ul>
+
+  <h3>🚫 Restricted Domains</h3>
+  <div class="row">
+    <input type="text" id="new-domain" placeholder="example.com">
+    <button id="add-domain-btn">Add</button>
+  </div>
+  <ul id="popup-domains"></ul>
+
+  <script src="popup.js"></script>
+</body>
+</html>
+
