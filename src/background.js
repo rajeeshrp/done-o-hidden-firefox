@@ -1,15 +1,16 @@
 // Function to update the blocking rule based on task completion
 async function updateBlockingRules() {
-  const data = await browser.storage.local.get(["tasks", "domains"]);
+  const data = await browser.storage.local.get(["tasks", "domains", "unlocked"]);
   const tasks = data.tasks || [];
-  const domains = data.domains || [];  
+  const domains = data.domains || [];
+  const unlocked = data.unlocked || false;
   
   // Check if there are tasks and if every single one is checked
   const allFinished = tasks.length > 0 && tasks.every(task => task.completed);
   const existingRules = await browser.declarativeNetRequest.getDynamicRules();
   const existingIds = existingRules.map(rule => rule.id);  
 
-  if (allFinished || domains.length == 0) {
+  if (unlocked || allFinished || domains.length == 0) {
     // If 100% finished, remove the block rule so you can visit Instagram
     await browser.declarativeNetRequest.updateDynamicRules({
       removeRuleIds: existingIds
@@ -42,7 +43,7 @@ async function updateBlockingRules() {
 
 // Watch for changes in the tasks storage to update rules instantly
 browser.storage.onChanged.addListener((changes) => {
-  if (changes.tasks || changes.domains) {
+  if (changes.tasks || changes.domains || changes.unlocked) {
     updateBlockingRules();
   }
 });

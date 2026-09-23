@@ -45,11 +45,13 @@ addBtn.addEventListener("click", async () => {
   const text = taskInput.value.trim();
   if (!text) return;
 
-  const data = await browser.storage.local.get(["tasks"]);
+  const data = await browser.storage.local.get(["tasks", "unlocked"]);
   const tasks = data.tasks || [];
   
   tasks.push({ text, completed: false });
-  await browser.storage.local.set({ tasks });
+  // User can unlock when there's no tasks in a day.
+  // When new tasks are added, reset unlocked to false.  
+  await browser.storage.local.set({ tasks: tasks, unlocked: false });
   
   taskInput.value = "";
   loadPopupTasks();
